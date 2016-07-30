@@ -32,11 +32,13 @@ import { patchObservables } from 'rxjs-compatibility';
 patchObservables();
 ```
 
-Although not usually necessary, if you need to customize what Observable prototypes get patched, you can optionally provide them as v4 and v5 arguments:
+If you need to customize what Observable prototypes get patched, you can optionally provide them as v4 and v5 arguments:
 
 ```js
 patchObservables(ObservableV4, ObservableV5);
 ```
+
+This is usually only neccesary when you're not using CommonJS modules. e.g. UMD builds of v4 and v5 use the same global variable `window.Rx` so you need to [store them elsewhere](http://jsbin.com/foqara/edit?html,js,output) and then provide them to the `patchObservable` call.
 
 #### stream$.v4()
 
@@ -63,6 +65,12 @@ RxV4.Observable.of(1, 2, 3)
 
 // 2, 3, 4
 ```
+
+#### Demo
+
+You can give it a spin in JSBin: http://jsbin.com/foqara/edit?js,output
+
+Notice that because JSBin doesn't support a module system and instead uses global variables, you have to provide the Observable classes you want to patch.
 
 ### Utility helpers
 
