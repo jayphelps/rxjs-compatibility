@@ -3,8 +3,8 @@ import { Observable as ObservableV4 } from 'rx';
 import $$observable from 'symbol-observable';
 
 export function toV5(input$, V5 = ObservableV5) {
-  if (input$[$$observable]) {
-    return input$[$$observable];
+  if (input$ instanceof V5) {
+    return input$;
   } else {
     return V5.create(observer => {
       const subscription = input$.subscribe(
@@ -19,8 +19,7 @@ export function toV5(input$, V5 = ObservableV5) {
 }
 
 export function toV4(input$, V4 = ObservableV4) {
-  // Only v4 and below has this
-  if ('flatMapLatest' in input$) {
+  if (input$ instanceof V4) {
     return input$;
   } else {
     return V4.create(observer => {

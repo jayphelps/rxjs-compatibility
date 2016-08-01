@@ -19,6 +19,13 @@ describe('toV5', () => {
     expect(next.calledOnce).to.be.true;
     expect(next.args[0]).to.deep.equal([[1, 2, 3]]);
   });
+
+  it('should return original if already v5', () => {
+    const v5a = RxV5.Observable.of(1, 2, 3);
+    const v5b = toV5(v5a);
+
+    expect(v5a).to.equal(v5b);
+  });
 });
 
 describe('toV4', () => {
@@ -33,6 +40,13 @@ describe('toV4', () => {
     expect(v4.flatMapLatest).to.be.a('function');
     expect(next.calledOnce).to.be.true;
     expect(next.args[0]).to.deep.equal([[1, 2, 3]]);
+  });
+
+  it('should return original if already v4', () => {
+    const v4a = RxV4.Observable.of(1, 2, 3);
+    const v4b = toV4(v4a);
+
+    expect(v4a).to.equal(v4b);
   });
 });
 
