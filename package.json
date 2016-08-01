@@ -1,6 +1,6 @@
 {
   "name": "rxjs-compatibility",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Use RxJS v5 with v4 and vice versa",
   "main": "lib/index.js",
   "scripts": {
