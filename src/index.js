@@ -1,6 +1,5 @@
 import { Observable as ObservableV5 } from 'rxjs/Observable';
 import { Observable as ObservableV4 } from 'rx';
-import $$observable from 'symbol-observable';
 
 export function toV5(input$, V5 = ObservableV5) {
   if (input$ instanceof V5) {
